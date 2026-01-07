@@ -1,4 +1,4 @@
-kimport streamlit as st
+import streamlit as st
 
 # --- 1. SQLITE FIX (Must be at the very top) ---
 # This stops the "ChromaDB requires SQLite > 3.35" crash
