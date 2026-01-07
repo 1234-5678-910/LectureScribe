@@ -1,4 +1,11 @@
 import streamlit as st
+
+# --- SQLITE FIX FOR STREAMLIT CLOUD (MUST BE AT THE TOP) ---
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+# -----------------------------------------------------------
+
 import os
 import chromadb
 from pypdf import PdfReader
@@ -15,14 +22,12 @@ from streamlit_lottie import st_lottie
 from gtts import gTTS
 
 # --- SECURE CONFIGURATION ---
-# This looks for the key in .streamlit/secrets.toml (Local) or Streamlit Cloud Secrets
 try:
     GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
-except FileNotFoundError:
-    st.error("🚨 API Key missing! Please set GROQ_API_KEY in .streamlit/secrets.toml")
-    st.stop()
-except KeyError:
-    st.error("🚨 API Key missing! Please set GROQ_API_KEY in .streamlit/secrets.toml")
+except (FileNotFoundError, KeyError):
+    # Fallback only for local testing if secrets file is missing (Optional)
+    # Ideally, keep this empty or error out for security
+    st.error("🚨 API Key missing! Please set GROQ_API_KEY in .streamlit/secrets.toml (Local) or Streamlit Cloud Secrets.")
     st.stop()
 
 DB_PATH = "my_vector_db"
