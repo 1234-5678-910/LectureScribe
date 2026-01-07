@@ -1,0 +1,11 @@
+streamlit
+chromadb
+pypdf
+langchain
+sentence-transformers
+groq
+plotly
+requests
+streamlit-lottie
+gtts
+graphviz

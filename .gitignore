@@ -1,0 +1,8 @@
+.streamlit/secrets.toml
+my_vector_db/
+chat_history.json
+__pycache__/
+*.pyc
+.DS_Store
+venv/
+.env
