@@ -1,0 +1,7 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/graph"
+  to = "/knowledge_graph.html"
+  status = 200
